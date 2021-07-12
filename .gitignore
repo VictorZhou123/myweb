@@ -1,0 +1,7 @@
+/db.sqlite3
+/myweb/__pycache__
+/front/migrations
+/blog/migrations
+/blog/__pycache__
+/back/migrations
+/back/__pycache__
