@@ -1,0 +1,38 @@
+{% extends 'myweb/_layout.html' %}
+
+
+
+{% block main %}
+
+{% if request.session.user %}
+    <div>
+        欢迎您，{{request.session.user}}!
+        <a class="btn" href="{% url 'back:logout' %}">登出</a>
+    </div>
+
+{% endif %}
+
+    <a class="btn btn-primary" href="{% url 'back:add' %}">新增</a>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <td>序号</td>
+                <td>标题</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for blog in blogs %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{blog.title}}</td>
+                    <td>
+                        <a class="btn btn-danger" href="{% url 'back:delete' blog.pk %}">删除</a>
+                        <a class="btn btn-success" href="{% url 'back:edit' blog.pk %}">编辑</a>
+                        <a class="btn btn-info" href="{% url 'back:detail' blog.pk %}">查看</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

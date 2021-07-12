@@ -1,0 +1,14 @@
+{% extends 'myweb/_layout.html' %}
+
+
+{% block main %}
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {{form}}
+
+        <div class="form-group">
+            <input class="btn ntn-primary" type="submit" value="注册">
+        </div>
+    </form>
+{% endblock %}

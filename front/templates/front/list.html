@@ -1,0 +1,35 @@
+{% extends 'myweb/_layout.html' %}
+
+{% block main %}
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>链接path视图</th>
+            <th>链接到querystring视图</th>
+        </tr>
+    </thead>
+    </tbody>
+        {% for blog in blogs %}
+            <tr>
+                <td> {{blog.title}} </td>
+                <td>
+    <!--                    相对路径 没有'/'开始-->
+                    <a href="detail/{{blog.pk}}">相对路径</a>
+    <!--                    绝对路径 '/'开始#-->
+                    <a href="/front/detail/{{blog.pk}}">绝对路径</a>
+    <!--                    通过生成路径的方式设置路径-->
+                    <a href="{% url 'front:detail_path' blog.pk %}">生成路径的方式</a>
+
+                </td>
+                <td>
+                    <a href="detail2/?bid={{blog.pk}}">相对路径</a>
+                    <a href="/front/detail2/?bid={{blog.pk}}">绝对路径</a>
+                    <a href="{% url 'front:detail_querystring' %}?bid={{blog.pk}}">生成路径的方式</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

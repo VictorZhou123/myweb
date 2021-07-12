@@ -1,0 +1,14 @@
+{% extends 'myweb/_layout.html' %}
+{% block title %}
+    博客详情
+{% endblock %}
+
+
+{% block main %}
+    <div class="alert alert-success" role="alert">
+        {{ blog.title }}
+    </div>
+    <p>
+        {{ blog.content }}
+    </p>
+{% endblock %}
